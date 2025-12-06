@@ -123,7 +123,7 @@ async def main() -> None:
     """Main function to run the tests."""
     print(f"--- 🔄 Connecting to agent at {AGENT_URL}... ---")
     try:
-        async with httpx.AsyncClient() as httpx_client:
+        async with httpx.AsyncClient(timeout=30.0) as httpx_client:
             # Create a resolver to fetch the agent card
             resolver = A2ACardResolver(
                 httpx_client=httpx_client,
